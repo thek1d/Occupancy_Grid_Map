@@ -9,6 +9,7 @@ from Dataset.ReadFile import FileHandler
 if __name__ == '__main__':
     
     fh = FileHandler()
-    ds = fh.getSheetNames
+    ds = fh.getDataSet()
+    
     print(ds)
     

@@ -12,7 +12,10 @@ class FileHandler():
     
     def __init__(self):
         self._filename = ""
+        self._dataset = []
+        
         self.__getFileName()
+    
     
     def __getFileName(self):
         if pt.system() == "Linux":
@@ -27,15 +30,25 @@ class FileHandler():
             self._filename = filedialog.askopenfilename( initialdir="/User",
                                                          title="Open File",
                                                          filetypes=(("Excel Files", ".xlsx .xls"),("All Files", "*.*")) )
-                
-    @property        
-    def getSheetNames(self):
-        sheets_names = pd.ExcelFile(self._filename).sheet_names
-        return sheets_names
+
+    '''Generating dataframe from Excel sheet'''                                
+    def getDataSet( self ):              
+        scan_ds = {}
+        offset = 0
+        row = 0
         
-        '''for i in range(len(sheets_names)):
-            df = pd.DataFrame()'''
-        #return pd.read_excel(self._filename, sheet_name="Scan 1")
+        sheets_names = pd.ExcelFile(self._filename).sheet_names
+        
+        for num_sheet in range(len(sheets_names)):
+            sheet = pd.read_excel(self._filename, sheet_name=sheets_names[num_sheet], header=None)
+            offset = num_sheet * (row + 1)
+            for row in range(len(sheet)):
+                scan_ds.update({row + offset : [ sheet.iloc[row][0], sheet.iloc[row][1] ]})
+                    
+        return scan_ds
+        
+        
+            
     
     
 
