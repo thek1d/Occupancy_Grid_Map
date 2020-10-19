@@ -15,11 +15,10 @@ from Dataset.dataset import FileHandler, Transformer
 
 if __name__ == '__main__':
     
-    value = { 'Angle'    : 0,
-              'Distance' : 1}
+    value = {'Angle' : 0, 'Distance' : 1}
     
     fh = FileHandler()
-    ds = fh.getDataSet()
-    
+    fh.generateDataSet()
+    ds = fh.getDataSet
     
     
