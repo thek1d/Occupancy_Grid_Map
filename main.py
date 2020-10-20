@@ -29,12 +29,19 @@ if __name__ == '__main__':
     cordinatesOrigin2RobotScan2 = {'x' : 50, 'y' : 50, 'Angle' : math.radians(120)}
     cordinatesOrigin2RobotScan3 = {'x' : 90, 'y' : 40, 'Angle' : math.radians(-17)}
     
-    wcScan1 = tf.calculateWorldCoordinates(rcScan1, cordinatesOrigin2RobotScan1)
-    wcScan2 = tf.calculateWorldCoordinates(rcScan2, cordinatesOrigin2RobotScan2)
-    wcScan3 = tf.calculateWorldCoordinates(rcScan3, cordinatesOrigin2RobotScan3)
+    wcScan1 = tf.calculateWorldCoordinates(scan=rcScan1, posOrigToRobScan=cordinatesOrigin2RobotScan1)
+    wcScan2 = tf.calculateWorldCoordinates(scan=rcScan2, posOrigToRobScan=cordinatesOrigin2RobotScan2)
+    wcScan3 = tf.calculateWorldCoordinates(scan=rcScan3, posOrigToRobScan=cordinatesOrigin2RobotScan3)
             
     pt = Plotter()
-    pt.plotAllData(wcScan1, wcScan2, wcScan3)
+    pt.plotOneScan(scan=rcScan1)
+    pt.plotOneScan(scan=wcScan1)
+    pt.plotOneScan(scan=rcScan2)
+    pt.plotOneScan(scan=wcScan2)
+    pt.plotTwoScan(scan1=wcScan1, scan2=wcScan2)
+    pt.plotOneScan(scan=rcScan3)
+    pt.plotOneScan(scan=wcScan3)
+    pt.plotAllData(scan1=wcScan1, scan2=wcScan2, scan3=wcScan3)
     
 
     

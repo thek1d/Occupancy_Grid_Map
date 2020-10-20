@@ -69,17 +69,17 @@ class Transformer():
         temp = self._dataSetRobotCoordinates.copy()
         return temp
     
-    def calculateWorldCoordinates(self, rcScan, posOrigToRobScan):
+    def calculateWorldCoordinates(self, scan, posOrigToRobScan):
         value = {'x' : 0, 'y' : 1, 'Angle' : 2}
-        for row in range(len(rcScan)):
+        for row in range(len(scan)):
             
             self._x =( posOrigToRobScan['x'] + 
-            math.cos(posOrigToRobScan['Angle']) * rcScan[row][value['x']] - 
-            math.sin(posOrigToRobScan['Angle']) * rcScan[row][value['y']] )
+            math.cos(posOrigToRobScan['Angle']) * scan[row][value['x']] - 
+            math.sin(posOrigToRobScan['Angle']) * scan[row][value['y']] )
             
             self._y =( posOrigToRobScan['y'] + 
-            math.sin(posOrigToRobScan['Angle']) * rcScan[row][value['x']] + 
-            math.cos(posOrigToRobScan['Angle']) * rcScan[row][value['y']] )
+            math.sin(posOrigToRobScan['Angle']) * scan[row][value['x']] + 
+            math.cos(posOrigToRobScan['Angle']) * scan[row][value['y']] )
             
             self._dataSetWorldCoordinates.update({row : [self._x, self._y]})
         
@@ -90,15 +90,36 @@ class Plotter():
     
     def __init__(self):
         pass
-    
-    def plotAllData(self, wcScan1, wcScan2, wcScan3):
+        
+    def plotAllData(self, scan1, scan2, scan3):
         value = {'x' : 0, 'y' : 1}
-        for row in range(len(wcScan1)):
-            plt.plot(wcScan1[row][value['x']], wcScan1[row][value['y']], 'ro',
-                     wcScan2[row][value['x']], wcScan2[row][value['y']], 'bo',
-                     wcScan3[row][value['x']], wcScan3[row][value['y']], 'go')
+        for row in range(len(scan1)):
+            plt.plot(scan1[row][value['x']], scan1[row][value['y']], 'ro',
+            scan2[row][value['x']], scan2[row][value['y']], 'bo',
+            scan3[row][value['x']], scan3[row][value['y']], 'go')
+                        
         plt.grid(True)
         plt.show()
+    
+    def plotOneScan(self, scan):
+        value = {'x' : 0, 'y' : 1}
+        for row in range(len(scan)):
+            plt.plot(scan[row][value['x']], scan[row][value['y']], 'ro')
+                            
+        plt.grid(True)
+        plt.show()
+    
+    def plotTwoScan(self, scan1, scan2):
+        value = {'x' : 0, 'y' : 1}
+        for row in range(len(scan1)):
+            plt.plot(scan1[row][value['x']], scan1[row][value['y']], 'ro',
+            scan2[row][value['x']], scan2[row][value['y']], 'bo')
+        
+        plt.grid(True)
+        plt.show()
+            
+        
+            
     
     
         
