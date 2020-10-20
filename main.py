@@ -17,11 +17,9 @@ import math
 if __name__ == '__main__':
     
     fh = FileHandler()
-    ''' look here! '''
     ds = fh.generateDataSet()
     
     tf = Transformer()
-    ''' Robot coordinates '''
     rcScan1 = tf.calculateRobotCoordinates(ds['Scan1'])
     rcScan2 = tf.calculateRobotCoordinates(ds['Scan2'])
     rcScan3 = tf.calculateRobotCoordinates(ds['Scan3'])
@@ -31,13 +29,12 @@ if __name__ == '__main__':
     cordinatesOrigin2RobotScan2 = {'x' : 50, 'y' : 50, 'Angle' : math.radians(120)}
     cordinatesOrigin2RobotScan3 = {'x' : 90, 'y' : 40, 'Angle' : math.radians(-17)}
     
-    ''' World coordinates  '''
     wcScan1 = tf.calculateWorldCoordinates(rcScan1, cordinatesOrigin2RobotScan1)
     wcScan2 = tf.calculateWorldCoordinates(rcScan2, cordinatesOrigin2RobotScan2)
     wcScan3 = tf.calculateWorldCoordinates(rcScan3, cordinatesOrigin2RobotScan3)
             
     pt = Plotter()
-    pt.plot(wcScan1, wcScan2, wcScan3)
+    pt.plotAllData(wcScan1, wcScan2, wcScan3)
     
 
     

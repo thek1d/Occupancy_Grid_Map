@@ -91,7 +91,7 @@ class Plotter():
     def __init__(self):
         pass
     
-    def plot(self, wcScan1, wcScan2, wcScan3):
+    def plotAllData(self, wcScan1, wcScan2, wcScan3):
         value = {'x' : 0, 'y' : 1}
         for row in range(len(wcScan1)):
             plt.plot(wcScan1[row][value['x']], wcScan1[row][value['y']], 'ro',
@@ -99,5 +99,7 @@ class Plotter():
                      wcScan3[row][value['x']], wcScan3[row][value['y']], 'go')
         plt.grid(True)
         plt.show()
+    
+    
         
                     
