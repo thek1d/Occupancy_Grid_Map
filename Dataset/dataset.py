@@ -26,7 +26,7 @@ class FileHandler():
                                                          title="Open File",
                                                          filetypes=(("Excel Files", ".xlsx .xls"),("All Files", "*.*")) )
         elif pt.system() == "Windows":
-            self._filename = filedialog.askopenfilename( initialdir="C:/",
+            self._filename = filedialog.askopenfilename( initialdir="C:\\",
                                                          title="Open File",
                                                          filetypes=(("Excel Files", ".xlsx .xls"),("All Files", "*.*")) )
         #Unix
